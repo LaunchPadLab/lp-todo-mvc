@@ -1,0 +1,8 @@
+{
+  "index.js": "http://0.0.0.0:8080/main/index.js",
+  "todo/components/hello.js": "http://0.0.0.0:8080/main/todo/components/hello.js",
+  "todo/index.js": "http://0.0.0.0:8080/main/todo/index.js",
+  "todo/packs/application.js": "http://0.0.0.0:8080/main/todo/packs/application.js",
+  "todo/packs/hello_react.js": "http://0.0.0.0:8080/main/todo/packs/hello_react.js",
+  "todo/packs/index.js": "http://0.0.0.0:8080/main/todo/packs/index.js"
+}
