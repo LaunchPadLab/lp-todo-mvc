@@ -1,26 +1,30 @@
-// Run this example by adding <%= javascript_pack_tag 'hello_react' %> to the head of your layout file,
-// like app/views/layouts/application.html.erb. All it does is render <div>Hello React</div> at the bottom
-// of the page.
+import Hello from 'components/hello';
+import WebpackerReact from 'webpacker-react';
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-import PropTypes from 'prop-types'
+WebpackerReact.register(Hello);
+// // Run this example by adding <%= javascript_pack_tag 'hello_react' %> to the head of your layout file,
+// // like app/views/layouts/application.html.erb. All it does is render <div>Hello React</div> at the bottom
+// // of the page.
 
-const Hello = props => (
-  <div>Hello {props.name}!</div>
-)
+// import React from 'react'
+// import ReactDOM from 'react-dom'
+// import PropTypes from 'prop-types'
 
-Hello.defaultProps = {
-  name: 'David'
-}
+// const Hello = props => (
+//   <div>Hello {props.name}!</div>
+// )
 
-Hello.propTypes = {
-  name: PropTypes.string
-}
+// Hello.defaultProps = {
+//   name: 'David'
+// }
 
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <Hello name="React" />,
-    document.body.appendChild(document.createElement('div')),
-  )
-})
+// Hello.propTypes = {
+//   name: PropTypes.string
+// }
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   ReactDOM.render(
+//     <Hello name="React" />,
+//     document.body.appendChild(document.createElement('div')),
+//   )
+// })
