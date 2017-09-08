@@ -1,7 +1,7 @@
 import React from 'react'
 import { Hello } from '../components';
 
-function Show() {
+function TodoShow() {
   return (
     <div>
       <Hello/>
@@ -9,4 +9,4 @@ function Show() {
   )
 }
 
-export default Show
+export default TodoShow
