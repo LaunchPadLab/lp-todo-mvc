@@ -1,8 +1,15 @@
 {
   "index.js": "http://0.0.0.0:8080/main/index.js",
-  "todo/components/hello.js": "http://0.0.0.0:8080/main/todo/components/hello.js",
+  "reducer.js": "http://0.0.0.0:8080/main/reducer.js",
+  "store.js": "http://0.0.0.0:8080/main/store.js",
+  "todo/actions.js": "http://0.0.0.0:8080/main/todo/actions.js",
+  "todo/components/footer.js": "http://0.0.0.0:8080/main/todo/components/footer.js",
+  "todo/components/header.js": "http://0.0.0.0:8080/main/todo/components/header.js",
   "todo/components/index.js": "http://0.0.0.0:8080/main/todo/components/index.js",
+  "todo/components/item.js": "http://0.0.0.0:8080/main/todo/components/item.js",
+  "todo/components/list.js": "http://0.0.0.0:8080/main/todo/components/list.js",
   "todo/index.js": "http://0.0.0.0:8080/main/todo/index.js",
+  "todo/reducer.js": "http://0.0.0.0:8080/main/todo/reducer.js",
   "todo/views/index.js": "http://0.0.0.0:8080/main/todo/views/index.js",
-  "todo/views/show.js": "http://0.0.0.0:8080/main/todo/views/show.js"
+  "todo/views/todo-show.js": "http://0.0.0.0:8080/main/todo/views/todo-show.js"
 }
