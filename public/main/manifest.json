@@ -1,5 +1,5 @@
 {
-  "index.js": "http://0.0.0.0:8080/main/index.js",
+  "main.js": "http://0.0.0.0:8080/main/main.js",
   "routes.js": "http://0.0.0.0:8080/main/routes.js",
   "todo/components/hello.js": "http://0.0.0.0:8080/main/todo/components/hello.js",
   "todo/components/index.js": "http://0.0.0.0:8080/main/todo/components/index.js",
