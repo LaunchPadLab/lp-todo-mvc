@@ -1,8 +1,10 @@
 {
-  "index.js": "http://0.0.0.0:8080/main/index.js",
+  "main.js": "http://0.0.0.0:8080/main/main.js",
+  "routes.js": "http://0.0.0.0:8080/main/routes.js",
   "todo/components/hello.js": "http://0.0.0.0:8080/main/todo/components/hello.js",
   "todo/components/index.js": "http://0.0.0.0:8080/main/todo/components/index.js",
   "todo/index.js": "http://0.0.0.0:8080/main/todo/index.js",
+  "todo/routes.js": "http://0.0.0.0:8080/main/todo/routes.js",
   "todo/views/index.js": "http://0.0.0.0:8080/main/todo/views/index.js",
-  "todo/views/show.js": "http://0.0.0.0:8080/main/todo/views/show.js"
+  "todo/views/todo-show.js": "http://0.0.0.0:8080/main/todo/views/todo-show.js"
 }

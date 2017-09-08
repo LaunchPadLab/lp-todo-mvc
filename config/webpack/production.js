@@ -6,12 +6,16 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const CompressionPlugin = require('compression-webpack-plugin')
 const sharedConfig = require('./shared.js')
+const aliases = require('./aliases')
+
 
 module.exports = merge(sharedConfig, {
   output: { filename: '[name]-[chunkhash].js' },
   devtool: 'source-map',
   stats: 'normal',
-
+  resolve: {
+    alias: aliases(paths.appSrc),
+  },
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
       minimize: true,
