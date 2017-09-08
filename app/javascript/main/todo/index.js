@@ -1,1 +1,1 @@
-import * as views from './packs'
+export { default as views } from './views'
