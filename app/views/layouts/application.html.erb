@@ -6,10 +6,12 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'index' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div id="root">
+      <% react_component('Routes', name: 'a component rendered from a view') %>
+      <%= yield %>
+    </div>
   </body>
 </html>

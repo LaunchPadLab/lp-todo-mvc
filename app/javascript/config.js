@@ -10,7 +10,7 @@
 
 // Route namespaces
 
-export const TODO_ROUTE = '/todo'
+export const TODO_ROUTE = '/'
 // export const EXTERNAL_REPUTATION_ROUTE = '/external-reputation'
 // export const PATIENT_DETAILS_ROUTE = '/patient-details'
 // export const PATIENT_INTAKE_ROUTE = '/patient-intake'

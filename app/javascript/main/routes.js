@@ -6,6 +6,7 @@ import { Route, Router, browserHistory, IndexRedirect } from 'react-router'
 // import Layout from './layout'
 import { routeHooks } from 'utils'
 import { routes as TodoRoutes } from './todo'
+
 // import { routes as ExternalReputationRoutes } from './external-reputation'
 // import { routes as PatientIndexRoutes } from './patient-index'
 // import { routes as PatientDetailsRoutes } from './patient-details'
@@ -38,19 +39,7 @@ const Routes = (
       {/* Components get passed down as children of Layout */}
       {/* <Route path="/" component={ Layout }> */}
       <Route path="/">
-        {/* <IndexRedirect to={PATIENT_SENTIMENT_ROUTE} /> */}
         { TodoRoutes }
-        {/* { ExternalReputationRoutes }
-        { PatientIndexRoutes }
-        { PatientDetailsRoutes }
-        { PatientIntakeRoutes }
-        { PatientSentimentRoutes }
-        { StyleguideRoutes }
-        { SurveyAdministrationRoutes }
-        { SurveyRoutes }
-        { TabletRoutes }
-        { TaskRoutes }
-        { UserRoutes } */}
       </Route>
     </Router>
   // </Provider>
