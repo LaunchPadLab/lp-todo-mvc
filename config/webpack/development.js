@@ -3,6 +3,9 @@
 const merge = require('webpack-merge')
 const sharedConfig = require('./shared.js')
 const { settings, output } = require('./configuration.js')
+const aliases = require('./aliases')
+const paths = require('./paths')
+
 
 module.exports = merge(sharedConfig, {
   devtool: 'cheap-eval-source-map',
@@ -14,7 +17,9 @@ module.exports = merge(sharedConfig, {
   output: {
     pathinfo: true
   },
-
+  resolve: {
+    alias: aliases(paths.appSrc),
+  },
   devServer: {
     clientLogLevel: 'none',
     https: settings.dev_server.https,
