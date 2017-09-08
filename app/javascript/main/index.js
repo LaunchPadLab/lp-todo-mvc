@@ -1,12 +1,12 @@
 // import React from 'react'
 // import PropTypes from 'prop-types'
-// import WebpackerReact from 'webpacker-react'
 // import { IndexRedirect, IndexRoute, Route, Router, browserHistory } from 'react-router'
 // import { applyMiddleware, compose, createStore, combineReducers } from 'redux'
 // import { Provider } from 'react-redux'
 // import { views } from './todo'
 
 import Routes from './routes'
+import WebpackerReact from 'webpacker-react'
 // import ReactDOM from 'react-dom'
 
 // ReactDOM.render(Routes, document.getE lementById('root'))
@@ -14,6 +14,7 @@ import Routes from './routes'
 /*
  * Register the app so WebpackerReact can find it
  */
+
 WebpackerReact.setup({ Routes })
 
 // For now we need to assign our view components to a const
