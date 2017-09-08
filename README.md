@@ -1,24 +1,15 @@
-# README
+# Rails + React + Webpacker + Webpacker-React
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+This is a template Rails 5.1 application, with Webpacker + React.
 
-* Ruby version
+React + React Router implementation follows Launchpad's established style and organization principles.
 
-* System dependencies
+If you choose to tackle setup and configuration, feel free to follow our [guide](https://github.com/LaunchPadLab/process).
 
-* Configuration
+# Versioning
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ - Ruby 2.4.1
+ - Rails 5.1
+ - Webpacker 2.0
+ - Webpacker-React 0.3.1
