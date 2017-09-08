@@ -1,3 +1,3 @@
-import Show from './show'
+import TodoShow from './todo-show'
 
-export default { Show }
+export default { TodoShow }
