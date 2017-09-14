@@ -2,7 +2,9 @@ export {
   set,
   last,
   cloneDeep,
-  filter
+  filter,
+  map,
+  getOr
 } from 'lodash/fp'
 
 export { default as updateArray } from './update-array'

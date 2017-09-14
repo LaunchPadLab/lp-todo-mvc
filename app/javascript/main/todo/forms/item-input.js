@@ -11,7 +11,7 @@ const propTypes = {
 function ItemInput({ input: { value, onChange, name }, submitForm }) {
   return (
     <input
-      name={name}
+      name={ name }
       value={ value }
       onChange={ onChange }
       onBlur={ submitForm }

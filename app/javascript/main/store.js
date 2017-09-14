@@ -4,8 +4,8 @@ import { applyMiddleware, compose, createStore, combineReducers } from 'redux'
 // import thunkMiddleware from 'redux-thunk'
 import { reducer as formReducer } from 'redux-form'
 // import { reducer as modalReducer } from 'redux-modal'
-// import { middleware as apiMiddleware } from 'api'
-// import { reducer as apiReducer } from 'lp-redux-api'
+import { middleware as apiMiddleware } from './api'
+import { reducer as apiReducer } from '@launchpadlab/lp-redux-api'
 import { reducer as rootReducer, reducerKey as rootKey } from './reducer'
 
 function initializeStore () {
@@ -18,9 +18,9 @@ function initializeStore () {
   const reducer = combineReducers({
     form: formReducer,
     // modal: modalReducer,
-    [rootKey]: rootReducer
+    [rootKey]: rootReducer,
     // routing: routerReducer,
-    // api: apiReducer,
+    api: apiReducer,
   })
   /*
    * Add support for the Redux Dev Tools in chrome.
@@ -31,7 +31,7 @@ function initializeStore () {
   //  */
   const enhancers = composeEnhancers(
     applyMiddleware(
-      // apiMiddleware,
+      apiMiddleware,
       // thunkMiddleware,
       // routerMiddleware(browserHistory)
     )

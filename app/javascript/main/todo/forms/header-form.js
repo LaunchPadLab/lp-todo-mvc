@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { reduxForm, Field } from 'redux-form'
 import { compose } from 'redux'
-import ItemInput from './item-input'
+import HeaderInput from './header-input'
 
 const propTypes = {
   handleSubmit: PropTypes.func.isRequired,
@@ -10,26 +10,21 @@ const propTypes = {
   form: PropTypes.string.isRequired
 }
 
-function ItemForm({ 
-  handleSubmit, 
-  submit, 
-  form
-}) {
+function HeaderForm({ handleSubmit }) {
   return (
     <form onSubmit={ handleSubmit }>
       <Field
         name="text"
-        component={ ItemInput }
-        submitForm={() => submit(form)} />
+        component={ HeaderInput }
+      />
     </form>
-
   )
 }
 
-ItemForm.propTypes = propTypes
+HeaderForm.propTypes = propTypes
 
 export default compose(
   reduxForm({
-    form: 'item-form'
+    form: 'header-form'
   })
-)(ItemForm)
+)(HeaderForm)

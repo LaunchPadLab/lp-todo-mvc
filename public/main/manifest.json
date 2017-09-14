@@ -1,4 +1,7 @@
 {
+  "api-actions.js": "http://0.0.0.0:8080/main/api-actions.js",
+  "api.js": "http://0.0.0.0:8080/main/api.js",
+  "effects.js": "http://0.0.0.0:8080/main/effects.js",
   "index.js": "http://0.0.0.0:8080/main/index.js",
   "reducer.js": "http://0.0.0.0:8080/main/reducer.js",
   "store.js": "http://0.0.0.0:8080/main/store.js",
@@ -8,6 +11,8 @@
   "todo/components/index.js": "http://0.0.0.0:8080/main/todo/components/index.js",
   "todo/components/item.js": "http://0.0.0.0:8080/main/todo/components/item.js",
   "todo/components/list.js": "http://0.0.0.0:8080/main/todo/components/list.js",
+  "todo/forms/header-form.js": "http://0.0.0.0:8080/main/todo/forms/header-form.js",
+  "todo/forms/header-input.js": "http://0.0.0.0:8080/main/todo/forms/header-input.js",
   "todo/forms/index.js": "http://0.0.0.0:8080/main/todo/forms/index.js",
   "todo/forms/item-form.js": "http://0.0.0.0:8080/main/todo/forms/item-form.js",
   "todo/forms/item-input.js": "http://0.0.0.0:8080/main/todo/forms/item-input.js",

@@ -1,34 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types'
+import { HeaderForm } from '../forms'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { getSet, getSetPropTypes } from '@launchpadlab/lp-utils'
+import * as effects from '../../effects'
 import * as actions from '../actions'
 
 const propTypes = {
-  createItem: PropTypes.func.isRequired,
-  ...getSetPropTypes('inputValue')
+  createItem: PropTypes.func,
 }
 
 function TodoHeader({
-  createItem,
-  inputValue,
-  setInputValue
+  createItem
 }) {
    return (
     <header className="header">
       <h1>Todos</h1>
-      <form
-        onSubmit={ (e) => {
-          e.preventDefault()
-          createItem(inputValue)
-          setInputValue('')
-      }}>
-        <input className="new-todo"
-          placeholder="What needs to be done?"
-          onChange={ e => setInputValue(e.target.value) }
-          value={ inputValue }/>
-      </form>
+      <HeaderForm
+         onSubmit={ effects.createItemResponse }
+         onSubmitSuccess={ 
+          (item, _, { reset }) => {
+            createItem(item)
+            reset()
+         }}
+      />
     </header>
   )
 }
@@ -40,6 +35,5 @@ const mapDispatchToProps = {
 }
 
 export default compose(
-  connect(null, mapDispatchToProps),
-  getSet('inputValue', { initialValues: { inputValue: '' }})
+  connect(null, mapDispatchToProps)
 )(TodoHeader)

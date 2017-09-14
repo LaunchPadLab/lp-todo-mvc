@@ -5,6 +5,8 @@
     },
     "private": true,
     "dependencies": {
+        "@launchpadlab/lp-redux-api": "^5.0.0",
+        "@launchpadlab/lp-requests": "^2.4.0",
         "@launchpadlab/lp-utils": "^2.15.0",
         "autoprefixer": "^7.1.4",
         "babel-core": "^6.26.0",
