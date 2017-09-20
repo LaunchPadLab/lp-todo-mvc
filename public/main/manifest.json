@@ -1,6 +1,7 @@
 {
   "api-actions.js": "http://0.0.0.0:8080/main/api-actions.js",
   "api.js": "http://0.0.0.0:8080/main/api.js",
+  "auth.js": "http://0.0.0.0:8080/main/auth.js",
   "effects.js": "http://0.0.0.0:8080/main/effects.js",
   "index.js": "http://0.0.0.0:8080/main/index.js",
   "reducer.js": "http://0.0.0.0:8080/main/reducer.js",
@@ -20,5 +21,6 @@
   "todo/index.js": "http://0.0.0.0:8080/main/todo/index.js",
   "todo/reducer.js": "http://0.0.0.0:8080/main/todo/reducer.js",
   "todo/views/index.js": "http://0.0.0.0:8080/main/todo/views/index.js",
-  "todo/views/todo-show.js": "http://0.0.0.0:8080/main/todo/views/todo-show.js"
+  "todo/views/todo-show.js": "http://0.0.0.0:8080/main/todo/views/todo-show.js",
+  "types.js": "http://0.0.0.0:8080/main/types.js"
 }

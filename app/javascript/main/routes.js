@@ -45,6 +45,11 @@ const TodoShow = views.TodoShow
 // }
 
 function Routes () {
+
+
+/*
+ * Initialize Store
+ */
   const store = initializeStore()
 
   return (
