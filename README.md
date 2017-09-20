@@ -16,13 +16,14 @@ Guide is in the works if you wish to tackle setup and configuration.
   This template ships with Todo MVC, which includes a Todos model. 
   If you do not wish to include this model in your database, delete all migrations related to Todos.
 
-  To start your Rails server, run:
+  To start the application, run:
 
-  4. `$ rails s`
+  4. `$ yarn start`
 
-  To start your Webpack build, run:
+  Alternatively if you need both Rails and Webpack output, run:
 
-  5. `$ ./bin/webpack-dev-server`
+  5. `$ yarn server`
+  6. `$ bundle exec rails s`
 
   Then,
 

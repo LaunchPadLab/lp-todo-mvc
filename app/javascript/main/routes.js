@@ -51,7 +51,7 @@ function Routes () {
     <Provider store={ store }>
       <Router history={browserHistory}>
         <Route path="/" component={ TodoShow }>
-          <IndexRedirect to="todos" />
+          {/* <IndexRedirect to="todos" /> */}
 
           {/* Public Routes */}
 

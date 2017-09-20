@@ -2,7 +2,8 @@
     "name": "rails-react",
     "scripts": {
         "lint": "eslint app/javascript",
-        "start": ""
+        "start": "bundle && yarn install && foreman start -f Procfile.dev",
+        "server": "./bin/webpack-dev-server"
     },
     "private": true,
     "dependencies": {
