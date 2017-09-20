@@ -5,7 +5,7 @@ import { applyMiddleware, compose, createStore, combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
 // import { reducer as modalReducer } from 'redux-modal'
 import { middleware as apiMiddleware } from './api'
-import { reducer as apiReducer } from 'lp-redux-api'
+import { reducer as apiReducer } from '@launchpadlab/lp-redux-api'
 import { reducer as rootReducer, reducerKey as rootKey } from './reducer'
 
 function initializeStore () {
