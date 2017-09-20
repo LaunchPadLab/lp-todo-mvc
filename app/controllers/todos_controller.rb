@@ -24,9 +24,9 @@ class TodosController < ApplicationController
   end
 
   def update
-    p @todo
+    @todo
     if @todo.update_attributes(todo_params)
-      p @todo
+      @todo
       respond_to do |format|
         format.json { render json: @todo.to_json }
       end

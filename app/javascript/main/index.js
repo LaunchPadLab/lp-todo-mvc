@@ -5,7 +5,7 @@ import Routes from './routes'
 /*
  * Register the app so WebpackerReact can find it
  */
-WebpackerReact.setup({ MainApp })
+WebpackerReact.setup({ MainApp:Routes })
 
 // For now we need to assign our view components to a const
 // In future iterations, this might not be the case

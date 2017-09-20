@@ -1,5 +1,4 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
 import {
   // IndexRedirect,
   // IndexRoute,
@@ -8,17 +7,15 @@ import {
   browserHistory
 } from 'react-router'
 import { Provider } from 'react-redux'
-// import { syncHistoryWithStore } from 'react-router-redux'
+import { syncHistoryWithStore } from 'react-router-redux'
 import initializeStore from './store'
+import { views } from './todo'
 // import { hasDirtyForm } from 'utils'
 // import { isAuthenticated } from 'lp-requests'
-import { views } from './todo'
+
 const TodoShow = views.TodoShow
 
-// const propTypes = {
-//   timezones: PropTypes.arrayOf(PropTypes.object).isRequired,
-//   intervalTypes: PropTypes.arrayOf(PropTypes.string).isRequired,
-// }
+const store = initializeStore()
 
 /*
  * Make the routing information available in the store
@@ -50,13 +47,11 @@ function Routes () {
 /*
  * Initialize Store
  */
-  const store = initializeStore()
-
   return (
     <Provider store={ store }>
       <Router history={browserHistory}>
-        <Route path="/" component={TodoShow}>
-          {/* <IndexRedirect to="todos" /> */}
+        <Route path="/" component={ TodoShow }>
+          <IndexRedirect to="todos" />
 
           {/* Public Routes */}
 
@@ -82,6 +77,5 @@ function Routes () {
     </Provider>
   )
 }
-// Routes.propTypes = propTypes
 
 export default Routes

@@ -1,7 +1,8 @@
 {
     "name": "rails-react",
     "scripts": {
-        "lint": "eslint app/javascript"
+        "lint": "eslint app/javascript",
+        "start": ""
     },
     "private": true,
     "dependencies": {
