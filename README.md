@@ -1,6 +1,5 @@
 # Rails + React + Webpacker + Webpacker-React
 
-
 This is a template Rails 5.1 application, with Webpacker + React.
 
 React + React Router implementation follows Launchpad's established style and organization principles.
