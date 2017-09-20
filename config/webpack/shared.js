@@ -14,6 +14,7 @@ const { env, settings, output, loadersDir } = require('./configuration.js')
 const extensionGlob = `**/*{${settings.extensions.join(',')}}*`
 const entryPath = join(settings.source_path, settings.source_entry_path)
 const packPaths = sync(join(entryPath, extensionGlob))
+const aliases = require('./aliases')
 
 module.exports = {
   entry: packPaths.reduce(
@@ -45,6 +46,7 @@ module.exports = {
   ],
 
   resolve: {
+    alias: aliases(resolve(entryPath, '../')),
     extensions: settings.extensions,
     modules: [
       resolve(settings.source_path),
