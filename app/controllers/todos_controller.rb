@@ -12,21 +12,13 @@ class TodosController < ApplicationController
 
   def create
     todo = Todo.new(todo_params)
-    if todo.save
-      respond_to do |format|
-        format.json { render json: todo.to_json }
-      end
-    else
-      respond_to do |format|
-        format.json { render json: { errors: todo.errors.messages } }
-      end
-    end
+    json_with todo.save
   end
 
   def update
-    p @todo
+    @todo
     if @todo.update_attributes(todo_params)
-      p @todo
+      @todo
       respond_to do |format|
         format.json { render json: @todo.to_json }
       end
