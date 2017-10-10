@@ -4,9 +4,6 @@ This is a template Rails 5.1 application, with Webpacker + React.
 
 React + React Router implementation follows Launchpad's established style and organization principles.
 
-Guide is in the works if you wish to tackle setup and configuration.
-<!-- If you choose to tackle setup and configuration, feel free to follow our [guide](https://github.com/LaunchPadLab/process). -->
-
 ## Getting Started
 
   1. `$ git clone git@github.com:LaunchPadLab/react-rails-five-one.git`

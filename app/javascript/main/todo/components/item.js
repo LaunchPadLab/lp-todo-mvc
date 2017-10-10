@@ -27,16 +27,16 @@ function TodoItem({
   setEditing,
 }) {
   return (
-    <li className={classnames({ 'completed': item.completed })}>
+    <li className={ classnames({ 'completed': item.completed }) }>
       <div className="view">
         <input
           className="toggle"
           type="checkbox"
-          checked={item.completed}
+          checked={ item.completed }
           onClick={
             () => effects.toggleCompleteRequest(item)
                          .then(toggleComplete)}/>
-        {!editingActive &&
+        { !editingActive &&
           <label onDoubleClick={() => setEditing(true)}>
             {item.text}
           </label>
