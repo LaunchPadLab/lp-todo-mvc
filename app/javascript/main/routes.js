@@ -20,7 +20,7 @@ const store = initializeStore()
 /*
  * Make the routing information available in the store
  */
-// const history = syncHistoryWithStore(browserHistory, store)
+const history = syncHistoryWithStore(browserHistory, store)
 
 // Confirm page transitions when there are incomplete forms
 
