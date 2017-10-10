@@ -1,17 +1,12 @@
-# Rails + React + Webpacker + Webpacker-React
+# LP Todo MVC
 
-This is a template Rails 5.1 application, with Webpacker + React.
-
-React + React Router implementation follows Launchpad's established style and organization principles.
+LP Todo MVC is a base Rails application for testing frontend libraries at [Launchpad Lab](https://launchpadlab.com/).
 
 ## Getting Started
 
   1. `$ git clone git@github.com:LaunchPadLab/react-rails-five-one.git`
   2. `$ cd react-rails-five-one`
   3. `$ bundle install && yarn install` 
-
-  This template ships with Todo MVC, which includes a Todos model. 
-  If you do not wish to include this model in your database, delete all migrations related to Todos.
 
   To start the application, run:
 
@@ -26,14 +21,6 @@ React + React Router implementation follows Launchpad's established style and or
 
   6. `$ open localhost:3000`
 
+  NOTE:
 
-## Webpacker + Webpacker-React
-
-## React Organization
-
-## Versioning
-
- - Ruby 2.4.1
- - Rails 5.1
- - Webpacker 2.0
- - Webpacker-React 0.3.1
+  If you wish to use this repository as a starting point, please drop any existing migrations related to the Todo MVC.
