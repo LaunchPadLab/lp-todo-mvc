@@ -12,8 +12,7 @@ class TodosController < ApplicationController
 
   def create
     todo = Todo.new(todo_params)
-    todo.save
-    json_with todo
+    json_with todo.save
   end
 
   def update

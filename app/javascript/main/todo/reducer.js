@@ -48,7 +48,6 @@ const reducer = handleActions({
     return set('todos.success', [...itemCollection, action.payload], state)
   },
 
-  // Does not work because the
   [actions.editItem]: (state, action) => {
     const itemCollection = getOr([], 'todos.success', state)
     const item = itemCollection.find((item) => item.id === action.payload.id)
