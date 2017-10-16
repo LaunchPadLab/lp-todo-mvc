@@ -42,32 +42,35 @@ const reducer = handleActions({
   [actions.setList]: (state, action) => set('list', action.payload, state),
 
   [actions.createItem]: (state, action) => {
-    const itemCollection = getOr([], 'todos.success', state)
-    return set('todos.success', [...itemCollection, action.payload], state)
+    const itemCollection = getOr([], 'todos.success.data.attributes', state)
+    return set(
+      'todos.success.data.attributes', 
+      [...itemCollection, action.payload.data.attributes], state)
   },
 
   [actions.editItem]: (state, action) => {
-    const itemCollection = getOr([], 'todos.success', state)
-    const item = itemCollection.find((item) => item.id === action.payload.id)
-    const newItem = { ...item, text: action.payload.text }
+    const itemCollection = getOr([], 'todos.success.data.attributes', state)
+    const item = itemCollection.find((item) => item.id === action.payload.data.attributes.id)
+    const newItem = { ...item, text: action.payload.data.attributes.text }
     const updatedCollection = updateItems(itemCollection, newItem)
-    return set('todos.success', updatedCollection, state)
+    return set('todos.success.data.attributes', updatedCollection, state)
   },
 
   [actions.toggleComplete]: (state, action) => {
-    const itemCollection = getOr([], 'todos.success', state)
-    const item = itemCollection.find((item) => item.id === action.payload.id)
+    const itemCollection = getOr([], 'todos.success.data.attributes', state)
+    const item = itemCollection.find((item) => item.id === action.payload.data.attributes.id)
     const toggledItem = { ...item, completed: !item.completed }
     const updatedCollection = updateItems(itemCollection, toggledItem)
-    return set('todos.success', updatedCollection, state)
+    return set('todos.success.data.attributes', updatedCollection, state)
   },
 
   [actions.destroyItem]: (state, action) => {
-    const itemCollection = getOr([], 'todos.success', state)
-    const itemToRemove = action.payload
-    const itemIndex = getIndexOf(itemCollection, item => item.id === itemToRemove.id)
+    const itemCollection = getOr([], 'todos.success.data.attributes', state)
+    const itemIdToRemove = action.payload
+    const itemIndex = 
+      getIndexOf(itemCollection, item => item.id === itemIdToRemove )
     const updatedCollection = removeItem(itemCollection, itemIndex)
-    return set('todos.success', updatedCollection, state)
+    return set('todos.success.data.attributes', updatedCollection, state)
   }
 
 }, initialState)
@@ -78,7 +81,7 @@ const select = selectorForSlice(slice)
 // Define selectors
 const selectors = {
   list: select('list'),
-  items: select('todos.success', []),
+  items: select('todos.success.data.attributes', []),
 }
 
 export { reducer, reducerKey, selectors }

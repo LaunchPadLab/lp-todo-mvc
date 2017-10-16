@@ -59,7 +59,7 @@ function TodoItem ({
           className="destroy"
           onClick={ 
             () => effects.destroyItemRequest({ id: item.id })
-                         .then(destroyItem)}>
+                         .then(() => destroyItem(item.id))}>
         </button>
       }
     </li>
