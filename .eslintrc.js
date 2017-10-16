@@ -45,12 +45,12 @@ module.exports = {
   //       },
   //     },
   // }
-  "settings": { "import/resolver": { "node": { "paths": ["./node_modules"] } } }
-  // 'settings': {
-  //   'import/resolver': {
-  //     'webpack': {
-  //       'config': 'config/webpack/development.js'
-  //     }
-  //   }
-  // }
+  // "settings": { "import/resolver": { "node": { "paths": ["./node_modules"] } } }
+  'settings': {
+    'import/resolver': {
+      'webpack': {
+        'config': __dirname + '/config/webpack/development.js'
+      }
+    }
+  }
 }

@@ -1,0 +1,1 @@
+console.log(__dirname + '/config/webpack/development.js')

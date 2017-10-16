@@ -1,16 +1,14 @@
 import {
   REQ_FETCH_TODOS
-} from '../api-actions'
-
+} from 'api-actions'
 import * as actions from './actions'
-
 import {
   set,
   cloneDeep,
   updateArray,
   getIndexOf,
-  getOr
-} from '../../utils'
+  getOr,
+} from 'utils'
 
 import { handleActions } from 'redux-actions'
 import { selectorForSlice } from '@launchpadlab/lp-utils'
