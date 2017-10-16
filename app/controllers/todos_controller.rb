@@ -4,7 +4,7 @@ class TodosController < ApplicationController
     only: [:update, :destroy, :toggle_complete, :update_text]
   
   def index
-    json_with todos = Todo.all
+    json_with todos = Todo.all.order(:id)
   end
 
   def create
@@ -14,15 +14,18 @@ class TodosController < ApplicationController
   end
 
   def update
-    json_with @todo.update_attributes(todo_params)
+    @todo.update_attributes(todo_params)
+    json_with @todo
   end
 
   def toggle_complete
-    json_with @todo.update_attributes(completed: switch_state(@todo.completed))
+    @todo.update_attributes(completed: switch_state(@todo.completed))
+    json_with @todo
   end
 
   def update_text
-    json_with @todo.update_attributes(text: todo_params[:text])
+    @todo.update_attributes(text: todo_params[:text])
+    json_with @todo
   end
 
   def destroy

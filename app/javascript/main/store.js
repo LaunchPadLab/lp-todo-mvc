@@ -1,5 +1,5 @@
 import { applyMiddleware, compose, createStore, combineReducers } from 'redux'
-// import { routerReducer, routerMiddleware } from 'react-router-redux'
+import { routerReducer, routerMiddleware } from 'react-router-redux'
 // import { browserHistory } from 'react-router'
 // import thunkMiddleware from 'redux-thunk'
 import { reducer as formReducer } from 'redux-form'
@@ -19,7 +19,7 @@ function initializeStore () {
     form: formReducer,
     // modal: modalReducer,
     [rootKey]: rootReducer,
-    // routing: routerReducer,
+    routing: routerReducer,
     api: apiReducer,
   })
   /*

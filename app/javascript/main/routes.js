@@ -22,25 +22,6 @@ const store = initializeStore()
  */
 const history = syncHistoryWithStore(browserHistory, store)
 
-// Confirm page transitions when there are incomplete forms
-
-// function onRouteChange(previousState, nextState, replace, callback) {
-//   const state = store.getState()
-//   if (hasDirtyForm(state)) {
-//     return window.confirm('Do you want to leave this page? Changes you made will not be saved.')
-//       ? callback()
-//       : null
-//   }
-//   return callback()
-// }
-
-// Confirm out-of-app transitions
-
-// window.onbeforeunload = event => {
-//   const state = store.getState()
-//   if (hasDirtyForm(state)) (event || window.event).returnValue = 'You have unsaved changes.'
-// }
-
 function Routes () {
 
 
@@ -49,7 +30,7 @@ function Routes () {
  */
   return (
     <Provider store={ store }>
-      <Router history={browserHistory}>
+      <Router history={ history }>
         <Route path="/" component={ TodoShow }>
           {/* <IndexRedirect to="todos" /> */}
 
