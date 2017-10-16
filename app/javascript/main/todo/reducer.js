@@ -9,7 +9,7 @@ import {
   getIndexOf,
   getOr,
 } from 'utils'
-
+import { createSelector } from 'reselect'
 import { handleActions } from 'redux-actions'
 import { selectorForSlice } from '@launchpadlab/lp-utils'
 import { setFromRequest } from '@launchpadlab/lp-redux-api'
@@ -31,7 +31,7 @@ const removeItem = (array, index) => {
 }
 
 const initialState = {
-  list: 'all',
+  filter: 'all',
   todos: {}
 }
 
@@ -39,7 +39,7 @@ const reducer = handleActions({
 
   ...setFromRequest(REQ_FETCH_TODOS, 'todos'),
   
-  [actions.setList]: (state, action) => set('list', action.payload, state),
+  [actions.setFilter]: (state, action) => set('filter', action.payload, state),
 
   [actions.createItem]: (state, action) => {
     const itemCollection = getOr([], 'todos.success.data.attributes', state)
@@ -80,8 +80,32 @@ const select = selectorForSlice(slice)
 
 // Define selectors
 const selectors = {
-  list: select('list'),
+  filter: select('filter'),
   items: select('todos.success.data.attributes', []),
 }
+
+selectors.activeItems = createSelector(
+  [ selectors.items ],
+  function (items) {
+    return items.filter(item => !item.completed)
+  }
+)
+
+selectors.completedItems = createSelector(
+  [ selectors.items ],
+  function (items) {
+    return items.filter(item => item.completed)
+  }
+)
+
+selectors.displayedItems = createSelector(
+  [ selectors.filter, selectors.items, selectors.activeItems, selectors.completedItems ],
+  function (filter, items, activeItems, completedItems) {
+    if (filter === 'active') return activeItems
+    if (filter === 'completed') return completedItems
+    return items
+  }
+)
+
 
 export { reducer, reducerKey, selectors }

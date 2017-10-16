@@ -1,3 +1,3 @@
-export { default as TodoHeader } from './todo-header'
-export { default as TodoFooter } from './todo-footer'
-export { default as TodoItem } from './todo-item'
+export { default as HeaderInput } from './header-input'
+export { default as FilterSelector } from './filter-selector'
+export { default as TodoList } from './todo-list'

@@ -4,7 +4,7 @@ import * as views from './views'
 
 const Routes = (
   <Route path="/todo">
-    <IndexRoute component={ views.TodoList }/>
+    <IndexRoute component={ views.Todo }/>
   </Route>
 )
 

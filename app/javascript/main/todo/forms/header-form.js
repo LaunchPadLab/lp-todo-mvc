@@ -15,7 +15,10 @@ function HeaderForm({ handleSubmit }) {
     <form onSubmit={ handleSubmit }>
       <Field
         name="text"
+        label={ false }
         component={ HeaderInput }
+        className="new-todo"
+        placeholder="What needs to be done?"
       />
     </form>
   )

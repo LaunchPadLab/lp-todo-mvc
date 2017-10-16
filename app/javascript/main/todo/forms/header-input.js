@@ -6,13 +6,12 @@ const propTypes = {
   input: PropTypes.object.isRequired
 }
 
-function HeaderInput({ input: { value, onChange }}) {
+function HeaderInput({ input: { value, onChange }, meta, ...rest }) {
   return (
     <input
-      className="new-todo"
-      placeholder="What needs to be done?"
       onChange={ onChange }
       value={ value }
+      { ...rest }
     />
   )
 }
