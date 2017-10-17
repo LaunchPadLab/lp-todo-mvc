@@ -23,8 +23,6 @@
         "babel-preset-env": "^1.6.0",
         "babel-preset-latest": "^6.24.1",
         "babel-preset-react": "^6.24.1",
-        "bourbon": "^4.3.4",
-        "bourbon-neat": "^1.9.0",
         "classnames": "^2.2.5",
         "coffee-loader": "^0.8.0",
         "coffee-script": "^1.12.7",
@@ -71,7 +69,6 @@
         "eslint-import-resolver-webpack": "^0.8.3",
         "eslint-plugin-import": "^2.7.0",
         "eslint-plugin-react": "^7.3.0",
-        "html-webpack-plugin": "^2.30.1",
         "react-dev-utils": "^4.1.0",
         "webpack-dev-server": "^2.9.2"
     }
