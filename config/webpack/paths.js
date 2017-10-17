@@ -2,7 +2,7 @@ const path = require('path')
 const url = require('url')
 
 function resolveApp(relativePath) {
-  return path.resolve(__dirname, '../', relativePath);
+  return path.resolve(__dirname, '../../', relativePath);
 }
 
 // Ensure path ends with a slash
@@ -18,12 +18,12 @@ const publicUrl = process.env.PUBLIC_URL || require(appPackageJson).homepage
 const servedPath = publicUrl ? ensureSlash(url.parse(publicUrl).pathname) : '/'
 
 module.exports = {
-  appBuild: resolveApp('build'),
-  appPublic: resolveApp('public'),
+  appBuild: resolveApp('public/main/'),
+  // appPublic: resolveApp('public'),
   appHtml: resolveApp('public/index.html'),
-  appIndexJs: resolveApp('src/js/entry/index.js'),
+  appIndexJs: resolveApp('app/javascript/main/index.js'),
   appPackageJson,
-  appSrc: resolveApp('src'),
+  appSrc: resolveApp('app/javascript'),
   bourbon: require('bourbon').includePaths,
   bourbonNeat: require('bourbon-neat').includePaths,
   appNodeModules: resolveApp('node_modules'),

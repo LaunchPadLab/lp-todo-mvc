@@ -1,3 +1,1 @@
-import TodoShow from './todo-show'
-
-export default { TodoShow }
+export { default as Todo } from './todo'

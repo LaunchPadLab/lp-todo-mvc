@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { reduxForm, Field } from 'redux-form'
 import { compose } from 'redux'
-import ItemInput from './item-input'
+import { AutoSubmitInput } from 'components'
 
 const propTypes = {
   handleSubmit: PropTypes.func.isRequired,
@@ -10,23 +10,24 @@ const propTypes = {
   form: PropTypes.string.isRequired
 }
 
-function ItemForm({ 
-  handleSubmit, 
-  submit, 
-  form
-}) {
+const defaultProps = {}
+
+function ItemForm ({ handleSubmit }) {
   return (
     <form onSubmit={ handleSubmit }>
       <Field
         name="text"
-        component={ ItemInput }
-        submitForm={() => submit(form)} />
+        component={ AutoSubmitInput }
+        className="editInput"
+        autoFocus
+      />
     </form>
-
   )
 }
 
 ItemForm.propTypes = propTypes
+
+ItemForm.defaultProps = defaultProps
 
 export default compose(
   reduxForm({

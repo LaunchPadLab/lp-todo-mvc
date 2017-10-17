@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
+
   root to: "pages#home"
+
+  constraints lambda { |req| req.format == :html } do
+    get '*any', to: 'pages#home'
+  end
 
   resources :todos, only: [:index, :create, :update, :destroy]
 

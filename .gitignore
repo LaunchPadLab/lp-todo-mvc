@@ -21,3 +21,4 @@
 /node_modules
 public/main
 public/packs
+.vscode
