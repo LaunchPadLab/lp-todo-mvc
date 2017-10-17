@@ -1,20 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import { HeaderForm } from '../forms'
-import * as effects from '../../effects'
+import * as effects from 'effects'
 
 const propTypes = {
-  createItem: PropTypes.func,
+  onCreate: PropTypes.func,
 }
 
 const defaultProps = {}
 
-function HeaderInput ({ createItem }) {
+function HeaderInput ({ onCreate }) {
    return (
     <HeaderForm
-       onSubmit={ effects.createItemResponse }
+       onSubmit={ effects.createItem }
        onSubmitSuccess={ (item, _, { reset }) => {
-        createItem(item)
+        onCreate(item)
         reset()
        }}
     />

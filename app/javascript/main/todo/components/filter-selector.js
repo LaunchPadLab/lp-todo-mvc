@@ -15,7 +15,6 @@ function FilterSelector ({ filter, setFilter }) {
       <ul className="filters">
         <li>
           <a
-            href="#"
             className={ classnames({ 'selected': filter === 'all' }) }
             onClick={ () => setFilter('all') }
           >
@@ -24,7 +23,6 @@ function FilterSelector ({ filter, setFilter }) {
         </li>
         <li>
           <a
-            href="#"
             className={ classnames({ 'selected': filter === 'active' }) }
             onClick={ () => setFilter('active') }
           >
@@ -33,7 +31,6 @@ function FilterSelector ({ filter, setFilter }) {
         </li>
         <li>
           <a
-            href="#"
             className={ classnames({ 'selected': filter === 'completed' }) }
             onClick={ () => setFilter('completed') }
           >

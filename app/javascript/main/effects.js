@@ -1,24 +1,17 @@
 import { api } from './api'
 
-export function toggleCompleteRequest(item) {
-  return api.patch(`/todos/${ item.id }/toggle_complete`)
+export function toggleComplete ({ id }) {
+  return api.patch(`/todos/${ id }/toggle_complete`)
 }
 
-export function editItemRequest({ id, text }) {
-  const payload = {
-    text: text
-  }
-  return api.patch(`/todos/${ id }/update_text`, { todo: payload })
+export function editItem ({ id, text }) {
+  return api.patch(`/todos/${ id }/update_text`, { todo: { text } })
 }
 
-export function createItemResponse({ text }) {
-  const payload = {
-    text: text,
-    completed: false
-  }
-  return api.post('/todos', { todo: payload })
+export function createItem ({ text }) {
+  return api.post('/todos', { todo: { text, completed: false } })
 }
 
-export function destroyItemRequest({ id }) {
+export function destroyItem ({ id }) {
   return api.destroy(`/todos/${ id }`)
 }

@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { HeaderInput, FilterSelector, TodoList } from '../components'
 import { compose } from 'redux'
-import { filter } from 'lodash'
 import { connect } from 'react-redux'
 import { selectors } from '../reducer'
 import { onMount } from '@launchpadlab/lp-utils'
@@ -16,6 +15,9 @@ const propTypes = {
   filter: PropTypes.string.isRequired,
   setFilter: PropTypes.func.isRequired,
   createItem: PropTypes.func.isRequired,
+  editItem: PropTypes.func.isRequired,
+  destroyItem: PropTypes.func.isRequired,
+  toggleComplete: PropTypes.func.isRequired,
   displayedItems: PropTypes.array.isRequired,
   completedItems: PropTypes.array.isRequired,
   activeItems: PropTypes.array.isRequired,
@@ -32,19 +34,27 @@ function Todo ({
   filter,
   setFilter,
   createItem,
+  editItem,
+  destroyItem,
+  toggleComplete,
 }) {
   return (
     <section className="todoapp">
       <header className="header">
         <h1>Todos</h1>
-        <HeaderInput createItem={ createItem } />
+        <HeaderInput onCreate={ createItem } />
       </header>
       <section className="main">
         {
           isLoading ?
             <LoadingIndicator />
           :
-            <TodoList items={ displayedItems } />
+            <TodoList 
+              items={ displayedItems }
+              onToggle={ toggleComplete }
+              onEdit={ editItem }
+              onDelete={ destroyItem }
+            />
         }
       </section>
       <div className="footer">
@@ -72,7 +82,6 @@ Todo.defaultProps = defaultProps
 
 function mapStateToProps (state) {
   return {
-    numItemsRemaining: filter(selectors.items(state), {completed: false}).length,
     filter: selectors.filter(state),
     activeItems: selectors.activeItems(state),
     completedItems: selectors.completedItems(state),
@@ -85,6 +94,9 @@ const mapDispatchToProps = {
   fetchTodos: apiActions.fetchTodos,
   setFilter: actions.setFilter,
   createItem: actions.createItem,
+  toggleComplete: actions.toggleComplete,
+  destroyItem: actions.destroyItem,
+  editItem: actions.editItem,
 }
 
 export default compose(

@@ -2,64 +2,67 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import { ItemForm } from '../forms'
 import { compose } from 'redux'
-import { connect } from 'react-redux'
-import { getSetPropTypes, toggle } from '@launchpadlab/lp-utils'
+import { toggle, togglePropTypes } from '@launchpadlab/lp-hoc'
 import classnames from 'classnames'
-import * as effects from '../../effects'
-import * as actions from '../actions'
+import * as effects from 'effects'
 
 const propTypes = {
   item: PropTypes.object.isRequired,
-  editItem: PropTypes.func.isRequired,
-  toggleComplete: PropTypes.func.isRequired,
-  destroyItem: PropTypes.func.isRequired,
+  onToggle: PropTypes.func.isRequired,
+  onEdit: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
   editingActive: PropTypes.bool,
   setEditing: PropTypes.func,
-  ...getSetPropTypes('inputValue')
+  ...togglePropTypes('editing'),
 }
 
+const defaultProps = {}
+
 function TodoItem ({
-  item,
-  editItem,
-  destroyItem,
-  toggleComplete,
-  editingActive,
+  item: {
+    id,
+    text,
+    completed,
+  },
+  onToggle,
+  onEdit,
+  onDelete,
+  editing,
   setEditing,
 }) {
   return (
-    <li className={ classnames({ 'completed': item.completed }) }>
+    <li className={ classnames({ 'completed': completed }) }>
       <div className="view">
         <input
           className="toggle"
           type="checkbox"
-          checked={ item.completed }
-          onClick={
-            () => effects.toggleCompleteRequest(item)
-                         .then(toggleComplete)}/>
-        { !editingActive &&
-          <label onDoubleClick={() => setEditing(true)}>
-            {item.text}
+          checked={ completed }
+          onClick={ () => effects.toggleComplete({ id }).then(() => onToggle(id)) }
+        />
+        { 
+          !editing &&
+          <label onDoubleClick={ () => setEditing(true) }>
+            { text }
           </label>
         }
       </div>
-
-      {editingActive &&
+      {
+        editing &&
         <ItemForm
-          onSubmit={ effects.editItemRequest }
-          onSubmitSuccess={
-            (item) => {
-              editItem(item)
-              setEditing(false) }}
-          initialValues={{ text: item.text, id: item.id }}
-        />}
-
-
-      {!editingActive &&
+          onSubmit={ effects.editItem }
+          onSubmitSuccess={ item => {
+            onEdit(item)
+            setEditing(false) 
+          }}
+          initialValues={{ text, id }}
+        />
+      }
+      {
+        !editing &&
         <button
           className="destroy"
-          onClick={ 
-            () => effects.destroyItemRequest({ id: item.id })
-                         .then(() => destroyItem(item.id))}>
+          onClick={ () => effects.destroyItem({ id }).then(() => onDelete(id)) }
+        >
         </button>
       }
     </li>
@@ -68,13 +71,8 @@ function TodoItem ({
 
 TodoItem.propTypes = propTypes
 
-const mapDispatchToProps = {
-  toggleComplete: actions.toggleComplete,
-  destroyItem: actions.destroyItem,
-  editItem: actions.editItem,
-}
+TodoItem.defaultProps = defaultProps
 
 export default compose(
-  connect(null, mapDispatchToProps),
-  toggle('editing')
+  toggle('editing'),
 )(TodoItem)

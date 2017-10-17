@@ -15,6 +15,7 @@
     "react"
   ],
   "plugins": [
+    "lodash",
     "syntax-dynamic-import",
     [
       "transform-class-properties",

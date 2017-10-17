@@ -1,9 +1,18 @@
 import React from 'react'
+// import PropTypes from 'prop-types'
 
-function LoadingIndicator() {
+const propTypes = {}
+
+const defaultProps = {}
+
+function LoadingIndicator () {
   return (
-    <h1>Im loading</h1>
+    <p> Loading... </p>
   )
 }
+
+LoadingIndicator.propTypes = propTypes
+
+LoadingIndicator.defaultProps = defaultProps
 
 export default LoadingIndicator

@@ -1,34 +1,17 @@
-import {
-  REQ_FETCH_TODOS
-} from 'api-actions'
+import { REQ_FETCH_TODOS } from 'api-actions'
 import * as actions from './actions'
 import {
   set,
-  cloneDeep,
-  updateArray,
-  getIndexOf,
   getOr,
 } from 'utils'
 import { createSelector } from 'reselect'
 import { handleActions } from 'redux-actions'
-import { selectorForSlice } from '@launchpadlab/lp-utils'
+import { selectorForSlice } from '@launchpadlab/lp-redux-utils'
 import { setFromRequest } from '@launchpadlab/lp-redux-api'
 
 // Reducer Keys
 const reducerKey = 'todo'
 const slice = 'root.todo'
-
-// Custom Functions
-const updateItems = (items, itemToUpdate) => {
-  const itemIndex = getIndexOf(items, item => item.id === itemToUpdate.id)
-  return updateArray(items, itemToUpdate, itemIndex)
-}
-
-const removeItem = (array, index) => {
-  const clonedArray = cloneDeep(array)
-  clonedArray.splice(index, 1)
-  return clonedArray
-}
 
 const initialState = {
   filter: 'all',
@@ -36,53 +19,43 @@ const initialState = {
 }
 
 const reducer = handleActions({
-
   ...setFromRequest(REQ_FETCH_TODOS, 'todos'),
-  
-  [actions.setFilter]: (state, action) => set('filter', action.payload, state),
-
-  [actions.createItem]: (state, action) => {
-    const itemCollection = getOr([], 'todos.success.data.attributes', state)
-    return set(
-      'todos.success.data.attributes', 
-      [...itemCollection, action.payload.data.attributes], state)
+  [actions.setFilter]: (state, { payload: filter }) => set('filter', filter, state),
+  [actions.createItem]: (state, { payload: newItem }) => {
+    const itemCollection = getOr([], 'todos.success', state)
+    return set('todos.success', [ ...itemCollection, newItem ], state)
   },
-
-  [actions.editItem]: (state, action) => {
-    const itemCollection = getOr([], 'todos.success.data.attributes', state)
-    const item = itemCollection.find((item) => item.id === action.payload.data.attributes.id)
-    const newItem = { ...item, text: action.payload.data.attributes.text }
-    const updatedCollection = updateItems(itemCollection, newItem)
-    return set('todos.success.data.attributes', updatedCollection, state)
+  [actions.editItem]: (state, { payload: { id, text } }) => {
+    const itemCollection = getOr([], 'todos.success', state)
+    const newItemCollection = itemCollection.map(item => {
+      return (item.id === id) ? { ...item, text } : item
+    })
+    return set('todos.success', newItemCollection, state)
   },
-
-  [actions.toggleComplete]: (state, action) => {
-    const itemCollection = getOr([], 'todos.success.data.attributes', state)
-    const item = itemCollection.find((item) => item.id === action.payload.data.attributes.id)
-    const toggledItem = { ...item, completed: !item.completed }
-    const updatedCollection = updateItems(itemCollection, toggledItem)
-    return set('todos.success.data.attributes', updatedCollection, state)
+  [actions.toggleComplete]: (state, { payload: id }) => {
+    const itemCollection = getOr([], 'todos.success', state)
+    const newItemCollection = itemCollection.map(item => {
+      return (item.id === id) ? { ...item, completed: !item.completed } : item
+    })
+    return set('todos.success', newItemCollection, state)
   },
-
-  [actions.destroyItem]: (state, action) => {
-    const itemCollection = getOr([], 'todos.success.data.attributes', state)
-    const itemIdToRemove = action.payload
-    const itemIndex = 
-      getIndexOf(itemCollection, item => item.id === itemIdToRemove )
-    const updatedCollection = removeItem(itemCollection, itemIndex)
-    return set('todos.success.data.attributes', updatedCollection, state)
+  [actions.destroyItem]: (state, { payload: id }) => {
+    const itemCollection = getOr([], 'todos.success', state)
+    const newItemCollection = itemCollection.filter(item => item.id !== id)
+    return set('todos.success', newItemCollection, state)
   }
-
 }, initialState)
 
 // Set selector path
 const select = selectorForSlice(slice)
 
-// Define selectors
+// Pure selectors
 const selectors = {
   filter: select('filter'),
-  items: select('todos.success.data.attributes', []),
+  items: select('todos.success', []),
 }
+
+// Computed selectors
 
 selectors.activeItems = createSelector(
   [ selectors.items ],
@@ -106,6 +79,5 @@ selectors.displayedItems = createSelector(
     return items
   }
 )
-
 
 export { reducer, reducerKey, selectors }
