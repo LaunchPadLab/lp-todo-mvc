@@ -7,20 +7,21 @@ import { selectors } from '../reducer'
 import { onMount } from '@launchpadlab/lp-utils'
 import { LoadingIndicator }from 'components'
 import { selectors as apiSelectors } from '@launchpadlab/lp-redux-api'
-
 import * as apiActions from 'api-actions'
 import * as actions from '../actions'
+import * as effects from 'effects'
+import * as Types from 'types'
 
 const propTypes = {
-  filter: PropTypes.string.isRequired,
+  filter: Types.displayFilter.isRequired,
   setFilter: PropTypes.func.isRequired,
   createItem: PropTypes.func.isRequired,
   editItem: PropTypes.func.isRequired,
   destroyItem: PropTypes.func.isRequired,
   toggleComplete: PropTypes.func.isRequired,
-  displayedItems: PropTypes.array.isRequired,
-  completedItems: PropTypes.array.isRequired,
-  activeItems: PropTypes.array.isRequired,
+  displayedItems: PropTypes.arrayOf(Types.todoItem).isRequired,
+  completedItems: PropTypes.arrayOf(Types.todoItem).isRequired,
+  activeItems: PropTypes.arrayOf(Types.todoItem).isRequired,
   isLoading: PropTypes.bool.isRequired,
 }
 
@@ -66,7 +67,11 @@ function Todo ({
           completedItems.length > 0 &&
           <button
             className="clear-completed"
-            onClick={ () => console.warn('TODO') }
+            onClick={ () =>
+              completedItems.forEach(item => 
+                effects.destroyItem(item).then(() => destroyItem(item.id))
+              )
+            }
           >
             Clear completed
           </button>

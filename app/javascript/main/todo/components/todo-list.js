@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import TodoListItem from './todo-list-item'
+import * as Types from 'types'
 
 const propTypes = {
-  items: PropTypes.arrayOf(PropTypes.object).isRequired,
+  items: PropTypes.arrayOf(Types.todoItem).isRequired,
   onToggle: PropTypes.func.isRequired,
   onEdit: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,

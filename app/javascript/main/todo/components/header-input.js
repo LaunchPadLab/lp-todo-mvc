@@ -4,7 +4,7 @@ import { HeaderForm } from '../forms'
 import * as effects from 'effects'
 
 const propTypes = {
-  onCreate: PropTypes.func,
+  onCreate: PropTypes.func.isRequired,
 }
 
 const defaultProps = {}

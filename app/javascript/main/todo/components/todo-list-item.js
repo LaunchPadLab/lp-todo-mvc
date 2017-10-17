@@ -5,14 +5,13 @@ import { compose } from 'redux'
 import { toggle, togglePropTypes } from '@launchpadlab/lp-hoc'
 import classnames from 'classnames'
 import * as effects from 'effects'
+import * as Types from 'types'
 
 const propTypes = {
-  item: PropTypes.object.isRequired,
+  item: Types.todoItem.isRequired,
   onToggle: PropTypes.func.isRequired,
   onEdit: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
-  editingActive: PropTypes.bool,
-  setEditing: PropTypes.func,
   ...togglePropTypes('editing'),
 }
 

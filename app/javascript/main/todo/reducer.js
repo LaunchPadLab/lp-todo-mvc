@@ -8,13 +8,14 @@ import { createSelector } from 'reselect'
 import { handleActions } from 'redux-actions'
 import { selectorForSlice } from '@launchpadlab/lp-redux-utils'
 import { setFromRequest } from '@launchpadlab/lp-redux-api'
+import * as Types from 'types'
 
 // Reducer Keys
 const reducerKey = 'todo'
 const slice = 'root.todo'
 
 const initialState = {
-  filter: 'all',
+  filter: Types.DISPLAY_FILTER_ALL,
   todos: {}
 }
 
@@ -74,8 +75,8 @@ selectors.completedItems = createSelector(
 selectors.displayedItems = createSelector(
   [ selectors.filter, selectors.items, selectors.activeItems, selectors.completedItems ],
   function (filter, items, activeItems, completedItems) {
-    if (filter === 'active') return activeItems
-    if (filter === 'completed') return completedItems
+    if (filter === Types.DISPLAY_FILTER_ACTIVE) return activeItems
+    if (filter === Types.DISPLAY_FILTER_COMPLETED) return completedItems
     return items
   }
 )
