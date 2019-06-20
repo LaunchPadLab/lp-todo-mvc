@@ -50,7 +50,7 @@ function Todo ({
           isLoading ?
             <LoadingIndicator />
           :
-            <TodoList 
+            <TodoList
               items={ displayedItems }
               onToggle={ toggleComplete }
               onEdit={ editItem }
